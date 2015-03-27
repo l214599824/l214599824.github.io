@@ -1,0 +1,32 @@
+---
+layout: default
+title: 
+---
+	<h3 style="display:none;">日志数({{ paginator.total_posts}})</h3>
+	{% for post in paginator.posts %}
+	<div class="blog-post">
+		<h2 class="blog-post-title">
+			<a href="{{ site:url  }}{{ post.url  }}" class="blog-post-title-link" target="_blank">{{post.title}}</a>
+		</h2>
+		<p>{{ post.description }}</p>
+		<p class="blog-post-meta">{{ post.date | date:"%Y-%m-%d"  }}</p>
+	</div>
+	{% endfor %}
+	<nav>
+		<ul class="pager">
+        {% if paginator.previous_page %}
+			{% if paginator.previous_page == 1  %}
+			<li>
+	        <a href="{{ site:url  }}/">上一页</a>
+			{% else  %}
+			<a href="{{ site:url  }}/page{{ paginator.previous_page }}">上一页</a>
+			{% endif  %}
+			</li>
+        {% endif %}
+        {% if paginator.next_page %}
+		<li>
+        <a href="{{ site:url  }}/page{{ paginator.next_page  }}">下一页</a>
+		</li>
+        {% endif %}
+		</ul>
+	</nav>
